@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, FormControl, Select, MenuItem, Typography } from '@mui/material'
-import LogoBanner from './LogoBanner'
+import { Box, Button, FormControl, Select, MenuItem } from '@mui/material'
 import PokemonCard from './PokemonCard'
 import POKEMON from '../data/pokemon'
 
@@ -17,7 +16,6 @@ export default function PokemonPage() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-      <LogoBanner />
 
       <PokemonCard pokemonId={displayedId} pokemonName={displayedName}>
         <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 1.75 }}>
@@ -71,9 +69,6 @@ export default function PokemonPage() {
         </Box>
       </PokemonCard>
 
-      <Typography sx={{ mt: 3, fontSize: '0.45rem', color: '#3B4CCA', letterSpacing: 1 }}>
-        ● GOTTA CODE 'EM ALL ●
-      </Typography>
     </Box>
   )
 }

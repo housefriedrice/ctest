@@ -4,6 +4,7 @@ import PokemonPage from './components/PokemonPage'
 import RandomPokemon from './pages/RandomPokemon'
 import WhosThat from './pages/WhosThat'
 import MyTeam from './pages/MyTeam'
+import TypeQuiz from './pages/TypeQuiz'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/random"         element={<RandomPokemon />} />
         <Route path="/whos-that"      element={<WhosThat />} />
         <Route path="/my-team"        element={<MyTeam />} />
+        <Route path="/type-quiz"      element={<TypeQuiz />} />
       </Route>
     </Routes>
   )

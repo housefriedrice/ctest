@@ -4,12 +4,14 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import ShuffleRoundedIcon from '@mui/icons-material/ShuffleRounded'
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded'
+import QuizRoundedIcon from '@mui/icons-material/QuizRounded'
 
 const navItems = [
   { label: 'Pokemon Lookup', path: '/pokemon-lookup', icon: <SearchRoundedIcon /> },
   { label: 'Random Pokemon', path: '/random',          icon: <ShuffleRoundedIcon /> },
   { label: "Who's That?",    path: '/whos-that',       icon: <HelpRoundedIcon /> },
   { label: 'My Team',        path: '/my-team',          icon: <GroupsRoundedIcon /> },
+  { label: 'Type Quiz',      path: '/type-quiz',        icon: <QuizRoundedIcon /> },
 ]
 
 export default function Layout() {

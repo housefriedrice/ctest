@@ -32,6 +32,20 @@ const resultSx = {
   '@keyframes stepIn': { from: { opacity: 0, transform: 'translateY(16px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
 }
 
+function PokeballIcon({ size = 64 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#CC0000" stroke="#111" strokeWidth="6" />
+      <path d="M4 50 A46 46 0 0 1 96 50 Z" fill="#CC0000" />
+      <path d="M4 50 A46 46 0 0 0 96 50 Z" fill="#fff" />
+      <rect x="4" y="44" width="92" height="12" fill="#111" />
+      <circle cx="50" cy="50" r="14" fill="#111" />
+      <circle cx="50" cy="50" r="9" fill="#fff" />
+      <circle cx="44" cy="44" r="3" fill="#fff" opacity="0.7" />
+    </svg>
+  )
+}
+
 export default function PokemonPage() {
   const [step,         setStep]         = useState(1)
   const [trainerName,  setTrainerName]  = useState('')
@@ -70,6 +84,14 @@ export default function PokemonPage() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', maxWidth: 560 }}>
+
+      {/* Header */}
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1.5, py: 1 }}>
+        <PokeballIcon size={72} />
+        <Typography sx={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.75rem', color: '#111', letterSpacing: 1 }}>
+          POKEMON LOOKUP
+        </Typography>
+      </Box>
 
       {/* Step 1 — Trainer name */}
       <StepCard number={1} title="ENTER YOUR NAME" done={step > 1} summary={`Trainer: ${trainerName}`}>

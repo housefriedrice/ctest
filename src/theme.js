@@ -2,40 +2,37 @@ import { createTheme } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
-    primary:    { main: '#3B4CCA' },
-    secondary:  { main: '#FFDE00' },
-    error:      { main: '#CC0000' },
-    background: { default: '#FFDE00' },
+    mode: 'light',
+    primary:    { main: '#1E3A5F', light: '#2D5491', dark: '#0F2040' },
+    secondary:  { main: '#0EA5E9', light: '#38BDF8', dark: '#0284C7' },
+    success:    { main: '#22C55E', light: '#4ADE80' },
+    warning:    { main: '#F59E0B', light: '#FCD34D' },
+    error:      { main: '#EF4444', light: '#FCA5A5' },
+    background: { default: '#F1F5F9', paper: '#FFFFFF' },
+    text:       { primary: '#0F172A', secondary: '#475569' },
   },
   typography: {
-    fontFamily: "'Press Start 2P', cursive",
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    button: { textTransform: 'none', fontWeight: 600 },
+    h5:     { fontWeight: 700 },
+    h6:     { fontWeight: 700 },
   },
+  shape: { borderRadius: 8 },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          fontFamily: "'Press Start 2P', cursive",
-          textTransform: 'none',
           borderRadius: 6,
-          border: '4px solid #111',
-          boxShadow: '4px 4px 0 #111',
-          '&:active': {
-            transform: 'translate(3px, 3px)',
-            boxShadow: '1px 1px 0 #111',
-          },
+          padding: '8px 20px',
+          boxShadow: 'none',
+          fontFamily: '"Inter", sans-serif',
+          '&:hover': { boxShadow: '0 2px 8px rgba(0,0,0,0.15)' },
         },
       },
     },
-    MuiSelect: {
+    MuiOutlinedInput: {
       styleOverrides: {
-        root: {
-          fontFamily: "'Press Start 2P', cursive",
-          fontSize: '0.65rem',
-          background: '#fff',
-          border: '4px solid #111',
-          borderRadius: 6,
-          boxShadow: '4px 4px 0 #111',
-        },
+        root: { borderRadius: 8, fontFamily: '"Inter", sans-serif' },
       },
     },
   },

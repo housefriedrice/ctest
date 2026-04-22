@@ -1,54 +1,58 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Paper } from '@mui/material'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 
 export default function StepCard({ number, title, done, summary, children }) {
   return (
-    <Box
+    <Paper
+      elevation={0}
       sx={{
-        bgcolor: done ? '#2a3694' : '#3B4CCA',
-        border: '5px solid #111',
-        borderRadius: 2,
-        boxShadow: '5px 5px 0 #111',
+        border: '1px solid',
+        borderColor: done ? 'rgba(34,197,94,0.3)' : 'rgba(0,0,0,0.08)',
+        borderRadius: '12px',
         overflow: 'hidden',
-        animation: 'stepIn 0.4s ease',
+        bgcolor: '#fff',
+        animation: 'stepIn 0.35s ease',
         '@keyframes stepIn': {
-          from: { opacity: 0, transform: 'translateY(16px)' },
+          from: { opacity: 0, transform: 'translateY(12px)' },
           to:   { opacity: 1, transform: 'translateY(0)' },
         },
       }}
     >
       {/* Header */}
-      <Box
-        sx={{
-          display: 'flex', alignItems: 'center', gap: 1.5,
-          px: 2.5, py: 1.5,
-          bgcolor: done ? '#1e2a7a' : '#CC0000',
-          borderBottom: '4px solid #111',
-        }}
-      >
+      <Box sx={{
+        display: 'flex', alignItems: 'center', gap: 1.5,
+        px: 2.5, py: 1.75,
+        bgcolor: done ? '#F0FDF4' : '#1E3A5F',
+        borderBottom: '1px solid',
+        borderColor: done ? 'rgba(34,197,94,0.2)' : 'rgba(0,0,0,0.1)',
+      }}>
         <Box sx={{
-          width: 26, height: 26, flexShrink: 0,
-          bgcolor: '#FFDE00', border: '3px solid #111', borderRadius: '50%',
+          width: 28, height: 28, flexShrink: 0,
+          bgcolor: done ? '#22C55E' : '#0EA5E9',
+          borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          <Typography sx={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.5rem', color: '#111', lineHeight: 1 }}>
+          <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff', lineHeight: 1 }}>
             {number}
           </Typography>
         </Box>
-        <Typography sx={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.5rem', color: '#FFDE00', flex: 1, lineHeight: 1.6 }}>
+        <Typography sx={{
+          fontSize: '0.8rem', fontWeight: 600, flex: 1,
+          color: done ? '#166534' : '#fff',
+        }}>
           {title}
         </Typography>
-        {done && <CheckCircleRoundedIcon sx={{ color: '#69f0ae', fontSize: 22, flexShrink: 0 }} />}
+        {done && <CheckCircleRoundedIcon sx={{ color: '#22C55E', fontSize: 20, flexShrink: 0 }} />}
       </Box>
 
       {/* Body */}
       <Box sx={{ p: 2.5 }}>
         {done ? (
-          <Typography sx={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.5rem', color: '#FFDE00', opacity: 0.75 }}>
-            ▶ {summary}
+          <Typography sx={{ fontSize: '0.8rem', color: '#475569' }}>
+            {summary}
           </Typography>
         ) : children}
       </Box>
-    </Box>
+    </Paper>
   )
 }

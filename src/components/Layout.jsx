@@ -1,114 +1,115 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
-import ShuffleRoundedIcon from '@mui/icons-material/ShuffleRounded'
-import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
-import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded'
-import QuizRoundedIcon from '@mui/icons-material/QuizRounded'
+import { Box, List, ListItemButton, ListItemIcon, ListItemText, Typography, Divider } from '@mui/material'
+import SearchRoundedIcon       from '@mui/icons-material/SearchRounded'
+import StarRoundedIcon         from '@mui/icons-material/StarRounded'
+import BarChartRoundedIcon     from '@mui/icons-material/BarChartRounded'
+import AssignmentRoundedIcon   from '@mui/icons-material/AssignmentRounded'
+import BusinessRoundedIcon     from '@mui/icons-material/BusinessRounded'
+import HexagonRoundedIcon      from '@mui/icons-material/HexagonRounded'
 
 const navItems = [
-  { label: 'Pokemon Lookup', path: '/pokemon-lookup', icon: <SearchRoundedIcon /> },
-  { label: 'Random Pokemon', path: '/random',          icon: <ShuffleRoundedIcon /> },
-  { label: "Who's That?",    path: '/whos-that',       icon: <HelpRoundedIcon /> },
-  { label: 'My Team',        path: '/my-team',          icon: <GroupsRoundedIcon /> },
-  { label: 'Type Quiz',      path: '/type-quiz',        icon: <QuizRoundedIcon /> },
+  { label: 'Product Catalog',   path: '/catalog',      icon: <SearchRoundedIcon fontSize="small" /> },
+  { label: 'Featured Items',    path: '/featured',     icon: <StarRoundedIcon fontSize="small" /> },
+  { label: 'Analytics',         path: '/analytics',    icon: <BarChartRoundedIcon fontSize="small" /> },
+  { label: 'Requisition Lists', path: '/requisitions', icon: <AssignmentRoundedIcon fontSize="small" /> },
+  { label: 'Suppliers',         path: '/suppliers',    icon: <BusinessRoundedIcon fontSize="small" /> },
 ]
 
 export default function Layout() {
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#F1F5F9' }}>
 
       {/* Sidebar */}
-      <Box
-        sx={{
-          width: 280,
-          flexShrink: 0,
-          bgcolor: '#3B4CCA',
-          borderRight: '6px solid #111',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <Box sx={{
+        width: 260,
+        flexShrink: 0,
+        bgcolor: '#0F2040',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '2px 0 12px rgba(0,0,0,0.15)',
+      }}>
+
         {/* Logo */}
-        <Box
-          sx={{
-            p: 2.5,
-            borderBottom: '4px solid #111',
-            bgcolor: '#2a3694',
-            textAlign: 'center',
-          }}
-        >
-          <img src="/images/pokemon_logo.svg" alt="Pokemon" style={{ width: 200 }} />
+        <Box sx={{ px: 3, py: 3, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Box sx={{
+              width: 36, height: 36, borderRadius: '10px',
+              bgcolor: '#0EA5E9',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <HexagonRoundedIcon sx={{ color: '#fff', fontSize: 20 }} />
+            </Box>
+            <Box>
+              <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '1rem', lineHeight: 1.2 }}>
+                MROHub
+              </Typography>
+              <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.65rem', fontWeight: 500 }}>
+                Procurement Intelligence
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
-        {/* Nav */}
-        <List disablePadding sx={{ flex: 1 }}>
+        {/* Nav label */}
+        <Box sx={{ px: 3, pt: 2.5, pb: 1 }}>
+          <Typography sx={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Navigation
+          </Typography>
+        </Box>
+
+        {/* Nav items */}
+        <List disablePadding sx={{ flex: 1, px: 1.5 }}>
           {navItems.map(({ label, path, icon }) => (
             <ListItemButton
               key={path}
               component={NavLink}
               to={path}
               sx={{
-                borderBottom: '3px solid #2a3694',
-                py: 2,
-                px: 2.5,
-                color: '#FFDE00',
-                '& .MuiListItemIcon-root': { color: '#FFDE00', minWidth: 36 },
-                '&:hover': { bgcolor: '#4a5cda' },
+                borderRadius: '8px',
+                mb: 0.5,
+                py: 1.25,
+                px: 1.5,
+                color: 'rgba(255,255,255,0.6)',
+                '& .MuiListItemIcon-root': { color: 'rgba(255,255,255,0.4)', minWidth: 34 },
+                '&:hover': {
+                  bgcolor: 'rgba(255,255,255,0.06)',
+                  color: '#fff',
+                  '& .MuiListItemIcon-root': { color: '#0EA5E9' },
+                },
                 '&.active': {
-                  bgcolor: '#CC0000',
-                  borderLeft: '6px solid #FFDE00',
-                  '& .MuiListItemIcon-root': { color: '#FFDE00' },
+                  bgcolor: 'rgba(14,165,233,0.15)',
+                  color: '#fff',
+                  '& .MuiListItemIcon-root': { color: '#0EA5E9' },
                 },
               }}
             >
               <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText
                 primary={label}
-                primaryTypographyProps={{
-                  fontFamily: "'Press Start 2P', cursive",
-                  fontSize: '0.55rem',
-                  lineHeight: 1.6,
-                }}
+                primaryTypographyProps={{ fontSize: '0.825rem', fontWeight: 500 }}
               />
             </ListItemButton>
           ))}
         </List>
 
         {/* Footer */}
-        <Box
-          sx={{
-            p: 2,
-            borderTop: '4px solid #2a3694',
-            textAlign: 'center',
-            fontFamily: "'Press Start 2P', cursive",
-            fontSize: '0.35rem',
-            color: '#FFDE00',
-            opacity: 0.6,
-          }}
-        >
-          ● GOTTA CODE 'EM ALL ●
+        <Divider sx={{ borderColor: 'rgba(255,255,255,0.07)' }} />
+        <Box sx={{ px: 3, py: 2 }}>
+          <Typography sx={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.68rem' }}>
+            v2.0.3 · MROHub Platform
+          </Typography>
         </Box>
       </Box>
 
       {/* Main content */}
-      <Box
-        sx={{
-          flex: 1,
-          bgcolor: '#FFDE00',
-          backgroundImage: `
-            radial-gradient(circle at 5% 95%, #CC0000 0px, #CC0000 50px, #111 50px, #111 55px, transparent 55px),
-            radial-gradient(circle at 95% 5%, #CC0000 0px, #CC0000 50px, #111 50px, #111 55px, transparent 55px)
-          `,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          py: 5,
-          px: 3,
-          minHeight: '100vh',
-        }}
-      >
+      <Box sx={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#F1F5F9',
+        minHeight: '100vh',
+        overflow: 'auto',
+      }}>
         <Outlet />
       </Box>
 
